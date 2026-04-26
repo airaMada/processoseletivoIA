@@ -19,5 +19,12 @@ model = models.Sequential([
     layers.Flatten(),
     layers.Dense(64, activation= 'relu'),
     layers.Dense(10, activation= 'relu'),
-
 ])
+
+model.compile(
+    optimizer= 'adam',
+    loss= 'sparse_categorical_crossentropy',
+    metrics= ['accuracy']
+)
+
+model.fit(x_train, y_train, epochs= 5, validation_data= (x_test, y_test))

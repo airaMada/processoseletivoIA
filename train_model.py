@@ -18,7 +18,7 @@ model = models.Sequential([
     layers.MaxPooling2D((2,2)),
     layers.Flatten(),
     layers.Dense(64, activation= 'relu'),
-    layers.Dense(10, activation= 'relu'),
+    layers.Dense(10, activation= 'softmax'),
 ])
 
 model.compile(
@@ -28,3 +28,6 @@ model.compile(
 )
 
 model.fit(x_train, y_train, epochs= 5, validation_data= (x_test, y_test))
+
+loss, acc= model.evaluate(x_test, y_test)
+print(f"Acurácia no teste: {acc:.4f}")
